@@ -1,0 +1,11 @@
+<app-cabecera></app-cabecera>
+<h2>Título Proyecto: {{title}}</h2>
+<h1
+(mouseover)="cambiarNombre()"
+(mouseleave)="retornarNombre()"
+>
+Nombre de ciclo: {{ciclo}}</h1>
+<input type="text" #user placeholder="Teclea nombre usuario ">
+<button (click)="cargarNombreUsuario(user.value)">Guardar</button>
+<span>{{nombreUsuario}}</span>
+<app-pie-pagina></app-pie-pagina>

@@ -16,13 +16,16 @@ export class AppComponent {
   }
   siguiente(){
     this.indiceImagenSeleccionada++
-    if(this.indiceImagenSeleccionada==this.imagenes.length){
+    if(this.indiceImagenSeleccionada==this.imagenes.length){ //Circular, quitar para no hacer circular
       this.indiceImagenSeleccionada=0;
     }
     this.imagen=this.imagenes[this.indiceImagenSeleccionada];
   }
   anterior(){
     this.indiceImagenSeleccionada--;
+    if(this.indiceImagenSeleccionada==this.imagenes.length){
+      this.indiceImagenSeleccionada=this.imagenes.length-1;
+    }
     this.imagen=this.imagenes[this.indiceImagenSeleccionada];
   }
 

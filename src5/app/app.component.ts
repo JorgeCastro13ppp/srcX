@@ -16,7 +16,7 @@ export class AppComponent {
   }
   siguiente(){
     this.indiceImagenSeleccionada++
-    if(this.indiceImagenSeleccionada==this.imagenes.length){ //Circular, quitar para no hacer circular
+    if(this.indiceImagenSeleccionada==this.imagenes.length){
       this.indiceImagenSeleccionada=0;
     }
     this.imagen=this.imagenes[this.indiceImagenSeleccionada];
@@ -29,11 +29,22 @@ export class AppComponent {
     this.imagen=this.imagenes[this.indiceImagenSeleccionada];
   }
 
+  play(){
+    this.temporizador=setInterval(()=>{
+      this.siguiente();
+    },100);
+  }
+  stop(){
+    clearInterval(this.temporizador);
+
+  }
+
   imagenes = [ 'https://randomuser.me/api/portraits/women/40.jpg', 'https://randomuser.me/api/portraits/women/41.jpg', 'https://randomuser.me/api/portraits/women/42.jpg', 'https://randomuser.me/api/portraits/women/43.jpg', 'https://randomuser.me/api/portraits/women/44.jpg', 'https://randomuser.me/api/portraits/men/40.jpg', 'https://randomuser.me/api/portraits/men/41.jpg', 'https://randomuser.me/api/portraits/men/42.jpg', 'https://randomuser.me/api/portraits/men/43.jpg', 'https://randomuser.me/api/portraits/men/44.jpg'];
   indiceImagenSeleccionada:number=0;
   imagen:string="";
   ancho:number=0;
   auto:boolean=false;
+  temporizador:NodeJS.Timeout | undefined
   constructor(){
     this.indiceImagenSeleccionada=0;
     this.ancho=300;

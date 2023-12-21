@@ -1,9 +1,16 @@
-<p>{{pueblitodos}}</p>
-<table>
-  <tr> <th>id</th><th>imagen</th></tr>
-
-  <tr *ngFor="let  x of pueblitodos">
-     <td>{{x.id}}</td>
-     <td><img [src]=x.imagen width="80" height="100" ></td>
-  </tr>
+<table class="table">
+  <thead>
+    <tr>
+      <th>Lugar</th>
+      <th>Autor</th>
+      <th>Imagen</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let x of pueblitodos">
+      <td>{{ x.texto }}</td>
+      <td>{{ x.subtexto }}</td>
+      <td><img [src]="x.imagen" width="80" height="100"></td>
+    </tr>
+  </tbody>
 </table>

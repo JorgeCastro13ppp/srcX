@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AsirComponent } from './asir/asir.component';
 import { DamComponent } from './dam/dam.component';
+import { DawComponent } from './daw/daw.component';
 
 const routes: Routes = [
   {
@@ -11,7 +12,7 @@ const routes: Routes = [
   },
   {
     path: 'daw',
-    component: DamComponent,
+    component: DawComponent,
     loadChildren: () => import('./daw/daw.module').then(m => m.DawModule)
   },
   {

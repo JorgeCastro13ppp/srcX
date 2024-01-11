@@ -1,0 +1,60 @@
+<p>fruta works!</p>
+<div class="container">
+  <div class="row d-flex justify-content-center">
+    <div class="col-md-4">
+      <form #f = "ngForm" class="form-group">
+        <div class="mb-3">
+          <label for="id" class="form-label">Id</label>
+          <input type="text" id="id" name="id" class="form-control" placeholder="Introduce Id" [(ngModel)]="fruta.id">
+        </div>
+        <div class="mb-3">
+          <label for="nombre" class="form-label">Nombre</label>
+          <input type="text" id="nombre" name="nombre" class="form-control" placeholder="Introduce nombre" [(ngModel)]="fruta.nombre">
+        </div>
+        <div class="mb-3">
+          <label for="precio" class="form-label">Precio</label>
+          <input type="number" id="precio" name="precio" class="form-control" placeholder="0" [(ngModel)]="fruta.precio">
+        </div>
+        <div class="mb-3">
+          <label for="unidades" class="form-label">Unidades</label>
+          <input type="number" id="unidades" name="unidades" class="form-control" placeholder="0" [(ngModel)]="fruta.unidades">
+        </div>
+        <div class="mb-3">
+          <label for="imagen" class="form-label">Imagen</label>
+          <input type="text" id="imagen" name="imagen" class="form-control" placeholder="Introduce Link de Imagen" [(ngModel)]="fruta.imagen">
+        </div>
+        <div class="mb-3 d-flex">
+          <input class="btn btn-success mx-1 " type="button" (click)="crearProducto(f)" value="Crear Producto">
+          <input class="btn btn-primary mx-1 " type="button" (click)="actualizarProductos()" value="Actualizar Productos">
+        </div>
+      </form>
+    </div>
+
+    <div class="col-md-8">
+      <h1>Gestión de frutería</h1>
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th>Id</th>
+            <th>Nombre</th>
+            <th>Precio</th>
+            <th>Unidades</th>
+            <th>Imagen</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let f of frutas">
+            <td>{{f.id}}</td>
+            <td>{{f.nombre}}</td>
+            <td>{{f.precio}}</td>
+            <td>{{f.unidades}}</td>
+            <td><img src="{{f.imagen}}" alt=""> </td>
+            <td><button type="button" class="btn btn-dark" (click)="Eliminar()">Eliminar</button></td>
+            <td><button type="button" class="btn btn-dark" (click)="Modificar()">Modificar</button></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

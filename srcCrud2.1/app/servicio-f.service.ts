@@ -14,9 +14,14 @@ export class ServicioFService {
     return this.httpCliente.get<Fruta[]>('http://moralo.atwebpages.com/menuAjax/productos2/index.php');
   }
 
-  agregarFruta(frutaAgregar:Fruta):Observable<Fruta[]>{
-    return this.httpCliente.post<Fruta[]>('http://moralo.atwebpages.com/menuAjax/productos2/index.php', frutaAgregar);
+  createProduct(producto: Fruta): Observable<Fruta>{
+    console.log("producto"+producto.id)
+    return this.httpCliente.post<Fruta>('http://moralo.atwebpages.com/menuAjax/productos2/create_product.php', producto);
   }
-
-
+  updateProduct(producto: Fruta){
+    return this.httpCliente.put<Fruta>('http://moralo.atwebpages.com/menuAjax/productos2/update_product.php', producto);
+  }
+  deleteProduct(id: string){
+    return this.httpCliente.delete<Fruta>('http://moralo.atwebpages.com/menuAjax/productos2/delete_product.php/?id='+id);
+  }
 }

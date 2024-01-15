@@ -9,35 +9,44 @@ import { ServicioFService } from '../servicio-f.service';
   styleUrls: ['./fruta.component.css']
 })
 export class FrutaComponent {
-actualizarProductos() {
-  this.httpCliente.leerProductos().subscribe(result => this.frutas = result);
-  console.log('Actualizados');
-}
-crearProducto(form:NgForm) {
 
-  this.httpCliente.agregarFruta(this.fruta).subscribe(response => {
-    console.log('Respuesta del servidor:', response);
+  constructor(private httpCliente:ServicioFService){
+    this.httpCliente.leerProductos().subscribe(result => this.frutas = result);
+  }
+
+  crearProducto(form: { value: Fruta; }){
+    this.httpCliente.createProduct(form.value).subscribe((producto:Fruta)=>{this.prod = producto});
+  }
+  actualizarProductos() {
+    this.httpCliente.updateProduct(this.fruta).subscribe((producto:Fruta)=>{this.prod=producto});
+  }
+  // crearProducto(form: {value:Fruta;}) {
+  //   console.log("Fruta a añadir: "+ form.value);
+  //   this.httpCliente.agregarFruta(form.value).subscribe(response => {
+  //     console.log('Respuesta del servidor:', response);
+  //     this.actualizarProductos(); // Llamar a la actualización después de agregar
+  //   });
+  // }
+  resetearFormulario(form: NgForm) {
     form.resetForm(); // Limpiar el formulario después de agregar la fruta
-    this.actualizarProductos(); // Llamar a la actualización después de agregar
-  });
+  }
+  seleccionar(f:Fruta) {
+    this.fruta=f;
+  }
+  eliminar(id:string) {
+    this.httpCliente.deleteProduct(id).subscribe((producto:Fruta)=>{this.prod=producto});
+  }
 
-  console.log('crear');
-}
-Modificar() {
-}
-Eliminar() {
-}
   title = 'crudFruta';
   frutas!:Fruta[];
-  fruta: Fruta = {
+  prod!:Fruta;
+  fruta:Fruta = {
     id: '',
     nombre: '',
     precio: 0,
     unidades: 0,
     imagen: ''
   };
-  constructor(private httpCliente:ServicioFService){
-    this.actualizarProductos();
-  }
+
 
 }

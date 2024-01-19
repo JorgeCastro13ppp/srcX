@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { TablaMensajesComponent } from './tabla-mensajes.component';
+import { CuadroDialogoComponent } from './cuadro-dialogo.component';
 
-describe('TablaMensajesComponent', () => {
-  let component: TablaMensajesComponent;
-  let fixture: ComponentFixture<TablaMensajesComponent>;
+describe('CuadroDialogoComponent', () => {
+  let component: CuadroDialogoComponent;
+  let fixture: ComponentFixture<CuadroDialogoComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ TablaMensajesComponent ]
+      declarations: [ CuadroDialogoComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(TablaMensajesComponent);
+    fixture = TestBed.createComponent(CuadroDialogoComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

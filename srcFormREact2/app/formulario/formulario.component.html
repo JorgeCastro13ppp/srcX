@@ -1,0 +1,61 @@
+<form (ngSubmit)="EnviarDatos()" [formGroup]="miformulario">
+
+  <div class="form-group">
+    <label for="nombre">Nombre</label>
+    <input type="text" formControlName="nombre" class="form-control" placeholder="" aria-describedby="helpId">
+    <div *ngIf="miformulario.get('nombre')?.invalid" class="text-danger">
+      <div *ngIf="nombre?.errors?.['required']">Nombre requerido</div>
+      <div *ngIf="nombre?.errors?.['maxlength']">No puede tener más de 20 caracteres</div>
+      <div *ngIf="nombre?.errors?.['minlength']">No puede tener menos de 10 caracteres </div>
+  </div>
+
+  </div>
+
+  <div class="form-group">
+    <label for="apellidos">Apellidos</label>
+    <input type="text" formControlName="apellidos" class="form-control" placeholder="" aria-describedby="helpId">
+    <div *ngIf="miformulario.get('apellidos')?.invalid" class="text-danger">
+      <div *ngIf="apellidos?.errors?.['required']">Apellidos requeridos</div>
+      <div *ngIf="apellidos?.errors?.['maxlength']">No puede tener más de 20 caracteres</div>
+      <div *ngIf="apellidos?.errors?.['minlength']">No puede tener menos de 10 caracteres </div>
+    </div>
+
+  </div>
+
+  <div class="form-group">
+    <label for="fechaN">Fecha de nacimiento</label>
+    <input type="date" formControlName="fechaN" class="form-control" placeholder="" aria-describedby="helpId">
+    <div *ngIf="miformulario.get('fechaN')?.invalid" class="text-danger">
+      <div *ngIf="fechaN?.errors?.['required']">Fecha requerida</div>
+    </div>
+
+  </div>
+
+  <div class="form-group">
+    <label for="tarjetaC">Tarjeta de crédito</label>
+    <input type="text" formControlName="tarjetaC" class="form-control" placeholder="" aria-describedby="helpId">
+    <div *ngIf="miformulario.get('tarjetaC')?.invalid" class="text-danger">
+      <div *ngIf="tarjetaC?.errors?.['required']">Tarjeta requerida</div>
+      <div *ngIf="tarjetaC?.errors?.['pattern']">No cumple los requisitos</div>
+    </div>
+
+
+  </div>
+
+  <div class="form-group">
+    <label for="pwd">Contraseña</label>
+    <input type="text" formControlName="pwd" class="form-control" placeholder="" aria-describedby="helpId">
+    <div *ngIf="miformulario.get('pwd')?.invalid" class="text-danger">
+      <div *ngIf="pwd?.errors?.['required']">Contraseña requerida</div>
+    <div *ngIf="pwd?.errors?.['pattern']">No cumple los requisitos</div>
+    </div>
+
+  </div>
+  <div>
+    <button type="submit" [disabled]="!miformulario.valid">
+      Validar
+    </button>
+  </div>
+</form>
+
+

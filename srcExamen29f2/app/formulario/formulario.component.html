@@ -1,0 +1,30 @@
+<form [formGroup]="reservaForm">
+  <mat-form-field appearance="fill">
+    <mat-label>Nombre</mat-label>
+    <input matInput formControlName="nombre">
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Hotel</mat-label>
+    <mat-select formControlName="hotel">
+      <mat-option *ngFor="let hotel of hoteles" [value]="hotel.id">{{ hotel.nombre }}</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Fecha de Entrada</mat-label>
+    <input matInput [matDatepicker]="entradaPicker" formControlName="fechaEntrada">
+    <mat-datepicker-toggle matSuffix [for]="entradaPicker"></mat-datepicker-toggle>
+    <mat-datepicker #entradaPicker></mat-datepicker>
+  </mat-form-field>
+
+  <mat-form-field appearance="fill">
+    <mat-label>Fecha de Salida</mat-label>
+    <input matInput [matDatepicker]="salidaPicker" formControlName="fechaSalida">
+    <mat-datepicker-toggle matSuffix [for]="salidaPicker"></mat-datepicker-toggle>
+    <mat-datepicker #salidaPicker></mat-datepicker>
+  </mat-form-field>
+
+  <button mat-raised-button color="primary" (click)="reservar()" [disabled]="!reservaForm.valid">Reservar</button>
+  <button mat-raised-button color="accent" (click)="enviar()">Enviar</button>
+</form>

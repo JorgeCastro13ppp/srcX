@@ -1,0 +1,30 @@
+<form>
+  <mat-form-field class="dark-input">
+    <input matInput placeholder="Nombre y Apellidos" [(ngModel)]="nombreCliente" name="nombreCliente">
+  </mat-form-field>
+
+  <mat-form-field class="dark-input">
+    <mat-label>Parador</mat-label>
+    <mat-select placeholder="Seleccionar Parador" [(ngModel)]="paradorSeleccionado" name="paradorSeleccionado">
+      <mat-option [value]="null">Selecciona un Parador</mat-option>
+      <mat-option *ngFor="let parador of paradores" [value]="parador.id">
+        {{ parador.nombre }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <mat-form-field class="dark-input">
+    <input matInput [matDatepicker]="picker1" placeholder="Fecha de Entrada" [value]="fechaEntrada" name="fechaEntrada">
+    <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+    <mat-datepicker #picker1></mat-datepicker>
+  </mat-form-field>
+
+  <mat-form-field class="dark-input">
+    <input matInput [matDatepicker]="picker2" placeholder="Fecha de Salida" [value]="fechaSalida" name="fechaSalida" >
+    <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+    <mat-datepicker #picker2></mat-datepicker>
+  </mat-form-field>
+
+  <button mat-raised-button color="primary" [disabled]="!formularioCompleto()" (click)="reservar()">Reservar</button>
+  <button mat-raised-button color="warn" (click)="resetearFormulario()">Resetear</button>
+</form>
